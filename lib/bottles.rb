@@ -1,9 +1,10 @@
 class Bottles
   def verses(x, y)
-    song = (x..y).inject('') do |result, index|
-      result << verse(index)
+    array = []
+    (y..x).each do |index|
+      array << verse(index)
     end
-    song.chomp
+    array.reverse.join
   end
 
   def verse(x)
