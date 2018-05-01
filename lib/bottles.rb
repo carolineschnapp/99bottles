@@ -5,43 +5,35 @@ class Bottles
     verses(99, 0)
   end
 
-  def verses(high, low)
-    high.downto(low).map do |index|
+  def verses(start, finish)
+    start.downto(finish).map do |index|
       verse(index)
     end
       .join("\n")
   end
 
-  def verse(n)
-    <<~VERSE
-      #{self.class.x_amount_of_bottle(n).capitalize} of beer on the wall, #{self.class.x_amount_of_bottle(n)} of beer.
-      #{self.class.instruction(n)}, #{self.class.x_amount_of_bottle(n - 1)} of beer on the wall.
-    VERSE
-  end
-
-  private
-
-  class << self
-    def x_amount_of_bottle(amount)
-      if amount == -1
-        "99 bottles"
-      elsif amount == 0
-        "no more bottles"
-      elsif amount == 1
-        "1 bottle"
-      else
-        "#{amount} bottles"
-      end
-    end
-
-    def instruction(number_of_bottles_we_started_with)
-      if number_of_bottles_we_started_with == 0
-        'Go to the store and buy some more'
-      elsif number_of_bottles_we_started_with == 1
-        'Take it down and pass it around'
-      else
-        'Take one down and pass it around'
-      end
+  def verse(number_of_bottles)
+    case number_of_bottles
+    when 0
+      <<~VERSE
+        No more bottles of beer on the wall, no more bottles of beer.
+        Go to the store and buy some more, 99 bottles of beer on the wall.
+      VERSE
+    when 1
+      <<~VERSE
+        1 bottle of beer on the wall, 1 bottle of beer.
+        Take it down and pass it around, no more bottles of beer on the wall.
+      VERSE
+    when 2
+      <<~VERSE
+        2 bottles of beer on the wall, 2 bottles of beer.
+        Take one down and pass it around, 1 bottle of beer on the wall.
+      VERSE
+    else
+      <<~VERSE
+        #{number_of_bottles} bottles of beer on the wall, #{number_of_bottles} bottles of beer.
+        Take one down and pass it around, #{number_of_bottles - 1} bottles of beer on the wall.
+      VERSE
     end
   end
 end
