@@ -1,6 +1,10 @@
 require 'pry-byebug'
 
 class Bottles
+  def song
+    verses(99, 0)
+  end
+
   def verses(x, y)
     array = []
     (y..x).each do |index|
