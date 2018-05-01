@@ -1,10 +1,12 @@
+require 'pry-byebug'
+
 class Bottles
   def verses(x, y)
     array = []
     (y..x).each do |index|
       array << verse(index)
     end
-    array.reverse.join
+    array.reverse.join("\n")
   end
 
   def verse(x)
