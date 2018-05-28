@@ -7,6 +7,10 @@ class BottlesNumber
     @number = number
   end
 
+  def to_s
+    "#{quantity} #{container}"
+  end
+
   def action
     if number == 0
       'Go to the store and buy some more'
@@ -19,7 +23,7 @@ class BottlesNumber
     if number == 0
       'no more'
     else
-      number.to_s
+      number
     end
   end
 
@@ -62,11 +66,11 @@ class Bottles
   end
 
   def verse(number)
-    bottles_number = BottlesNumber.new(number)
-    next_bottles_number = bottles_number.successor
+    bottles = BottlesNumber.new(number)
+    next_bottles = bottles.successor
     <<~VERSE
-      #{bottles_number.quantity.capitalize} #{bottles_number.container} of beer on the wall, #{bottles_number.quantity} #{bottles_number.container} of beer.
-      #{bottles_number.action}, #{next_bottles_number.quantity} #{next_bottles_number.container} of beer on the wall.
+      #{bottles.to_s.capitalize} of beer on the wall, #{bottles} of beer.
+      #{bottles.action}, #{next_bottles} of beer on the wall.
     VERSE
   end
 end
