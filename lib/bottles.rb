@@ -77,10 +77,9 @@ class Bottles
 
   def verse(number)
     bottles = BottleNumber.for(number)
-    next_bottles = bottles.successor
     <<~VERSE
       #{bottles.to_s.capitalize} of beer on the wall, #{bottles} of beer.
-      #{bottles.action}, #{next_bottles} of beer on the wall.
+      #{bottles.action}, #{bottles.successor} of beer on the wall.
     VERSE
   end
 end
