@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry-byebug'
 
 class BottleNumber
@@ -82,9 +84,10 @@ class Bottles
   end
 
   def verses(start, finish)
-    start.downto(finish).map do |index|
-      verse(index)
-    end
+    start
+      .downto(finish).map do |index|
+        verse(index)
+      end
       .join("\n")
   end
 

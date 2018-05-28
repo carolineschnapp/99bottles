@@ -1,3 +1,6 @@
+
+# frozen_string_literal: true
+
 gem 'minitest', '~> 5.4'
 require 'minitest/autorun'
 require 'minitest/pride'
