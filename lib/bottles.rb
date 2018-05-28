@@ -9,8 +9,10 @@ class BottleNumber
       BottleNumber0.new(number)
     when 1
       BottleNumber1.new(number)
+    when 6
+      BottleNumber6.new(number)
     else
-      new(number)
+      BottleNumber.new(number)
     end
   end
 
@@ -35,7 +37,7 @@ class BottleNumber
   end
 
   def successor
-    self.class.for(number - 1)
+    BottleNumber.for(number - 1)
   end
 end
 
@@ -60,6 +62,16 @@ class BottleNumber1 < BottleNumber
 
   def container
     'bottle'
+  end
+end
+
+class BottleNumber6 < BottleNumber
+  def quantity
+    1
+  end
+
+  def container
+    'six-pack'
   end
 end
 
